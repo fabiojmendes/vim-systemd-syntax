@@ -376,6 +376,229 @@ syn region sdSliceBlock matchgroup=sdHeader start=/^\[Slice\]/ end=/^\[/me=e-2 c
 syn region sdScopeBlock matchgroup=sdHeader start=/^\[Scope\]/ end=/^\[/me=e-2 contains=sdScopeKey,sdResCtlKey,sdKillKey
 syn match sdScopeKey contained /^TimeoutStopSec=/ nextgroup=sdDuration,sdErr
 
+" [Container] {{{1
+syn region sdContainerBlock matchgroup=sdHeader start=/^\[Container\]/ end=/^\[/me=e-2 contains=sdContainerKey
+syn match sdContainerKey contained /^AddCapability=/
+syn match sdContainerKey contained /^AddDevice=/
+syn match sdContainerKey contained /^AddHost=/
+syn match sdContainerKey contained /^Annotation=/
+syn match sdContainerKey contained /^AutoUpdate=/
+syn match sdContainerKey contained /^CgroupsMode=/
+syn match sdContainerKey contained /^ContainerName=/
+syn match sdContainerKey contained /^ContainersConfModule=/
+syn match sdContainerKey contained /^DNS=/
+syn match sdContainerKey contained /^DNSOption=/
+syn match sdContainerKey contained /^DNSSearch=/
+syn match sdContainerKey contained /^DropCapability=/
+syn match sdContainerKey contained /^Entrypoint=/
+syn match sdContainerKey contained /^Environment=/ nextgroup=sdEnvDefs
+syn match sdContainerKey contained /^EnvironmentFile=-\=/ contains=sdEnvDashFlag nextgroup=sdFilename,sdErr
+syn match sdContainerKey contained /^EnvironmentHost=/
+syn match sdContainerKey contained /^Exec=/
+syn match sdContainerKey contained /^ExposeHostPort=/
+syn match sdContainerKey contained /^GIDMap=/
+syn match sdContainerKey contained /^GlobalArgs=/
+syn match sdContainerKey contained /^Group=/
+syn match sdContainerKey contained /^GroupAdd=/
+syn match sdContainerKey contained /^HealthCmd=/
+syn match sdContainerKey contained /^HealthInterval=/ nextgroup=sdDuration,sdErr
+syn match sdContainerKey contained /^HealthLogDestination=/
+syn match sdContainerKey contained /^HealthMaxLogCount=/ nextgroup=sdUInt,sdErr
+syn match sdContainerKey contained /^HealthMaxLogSize=/
+syn match sdContainerKey contained /^HealthOnFailure=/
+syn match sdContainerKey contained /^HealthRetries=/ nextgroup=sdUInt,sdErr
+syn match sdContainerKey contained /^HealthStartPeriod=/ nextgroup=sdDuration,sdErr
+syn match sdContainerKey contained /^HealthStartupCmd=/
+syn match sdContainerKey contained /^HealthStartupInterval=/ nextgroup=sdDuration,sdErr
+syn match sdContainerKey contained /^HealthStartupRetries=/ nextgroup=sdUInt,sdErr
+syn match sdContainerKey contained /^HealthStartupSuccess=/ nextgroup=sdUInt,sdErr
+syn match sdContainerKey contained /^HealthStartupTimeout=/ nextgroup=sdDuration,sdErr
+syn match sdContainerKey contained /^HealthTimeout=/ nextgroup=sdDuration,sdErr
+syn match sdContainerKey contained /^HostName=/
+syn match sdContainerKey contained /^Image=/
+syn match sdContainerKey contained /^IP=/
+syn match sdContainerKey contained /^IP6=/
+syn match sdContainerKey contained /^Label=/
+syn match sdContainerKey contained /^LogDriver=/
+syn match sdContainerKey contained /^LogOpt=/
+syn match sdContainerKey contained /^Mask=/
+syn match sdContainerKey contained /^Memory=/
+syn match sdContainerKey contained /^Mount=/
+syn match sdContainerKey contained /^Network=/
+syn match sdContainerKey contained /^NetworkAlias=/
+syn match sdContainerKey contained /^NoNewPrivileges=/
+syn match sdContainerKey contained /^Notify=/ nextgroup=sdContainerNotifyType,sdErr
+syn match sdContainerKey contained /^PidsLimit=/
+syn match sdContainerKey contained /^Pod=/
+syn match sdContainerKey contained /^PodmanArgs=/
+syn match sdContainerKey contained /^PublishPort=/
+syn match sdContainerKey contained /^Pull=/
+syn match sdContainerKey contained /^ReadOnly=/
+syn match sdContainerKey contained /^ReadOnlyTmpfs=/
+syn match sdContainerKey contained /^ReloadCmd=/
+syn match sdContainerKey contained /^ReloadSignal=/
+syn match sdContainerKey contained /^Retry=/
+syn match sdContainerKey contained /^RetryDelay=/
+syn match sdContainerKey contained /^Rootfs=/
+syn match sdContainerKey contained /^RunInit=/
+syn match sdContainerKey contained /^SeccompProfile=/
+syn match sdContainerKey contained /^Secret=/
+syn match sdContainerKey contained /^SecurityLabelDisable=/
+syn match sdContainerKey contained /^SecurityLabelFileType=/
+syn match sdContainerKey contained /^SecurityLabelLevel=/
+syn match sdContainerKey contained /^SecurityLabelNested=/
+syn match sdContainerKey contained /^SecurityLabelType=/
+syn match sdContainerKey contained /^ShmSize=/
+syn match sdContainerKey contained /^StartWithPod=/
+syn match sdContainerKey contained /^StopSignal=/
+syn match sdContainerKey contained /^StopTimeout=/
+syn match sdContainerKey contained /^SubGIDMap=/
+syn match sdContainerKey contained /^SubUIDMap=/
+syn match sdContainerKey contained /^Sysctl=/
+syn match sdContainerKey contained /^Timezone=/
+syn match sdContainerKey contained /^Tmpfs=/
+syn match sdContainerKey contained /^UIDMap=/
+syn match sdContainerKey contained /^Ulimit=/
+syn match sdContainerKey contained /^Unmask=/
+syn match sdContainerKey contained /^User=/
+syn match sdContainerKey contained /^UserNS=/
+syn match sdContainerKey contained /^Volume=/ nextgroup=sdFilename,sdContainerVolume,sdErr
+syn match sdContainerKey contained /^WorkingDir=/
+
+syn match sdContainerVolume contained nextgroup=sdErr /\S*.volume:\/\S*/
+syn keyword sdContainerNotifyType contained nextgroup=sdErr true false healthy
+"}}}
+
+" [Pod] {{{1
+syn region sdPodBlock matchgroup=sdHeader start=/^\[Pod\]/ end=/^\[/me=e-2 contains=sdPodKey
+syn match sdPodKey contained /^AddHost/
+syn match sdPodKey contained /^ContainersConfModule/
+syn match sdPodKey contained /^DNS/
+syn match sdPodKey contained /^DNSOption/
+syn match sdPodKey contained /^DNSSearch/
+syn match sdPodKey contained /^GIDMap/
+syn match sdPodKey contained /^GlobalArgs/
+syn match sdPodKey contained /^HostName/
+syn match sdPodKey contained /^IP/
+syn match sdPodKey contained /^IP6/
+syn match sdPodKey contained /^Label/
+syn match sdPodKey contained /^Network/
+syn match sdPodKey contained /^NetworkAlias/
+syn match sdPodKey contained /^PodmanArgs/
+syn match sdPodKey contained /^PodName/
+syn match sdPodKey contained /^PublishPort/
+syn match sdPodKey contained /^ServiceName/
+syn match sdPodKey contained /^ShmSize/
+syn match sdPodKey contained /^SubGIDMap/
+syn match sdPodKey contained /^SubUIDMap/
+syn match sdPodKey contained /^UIDMap/
+syn match sdPodKey contained /^UserNS/
+syn match sdPodKey contained /^Volume/
+"}}}
+
+" [Kube] {{{1
+syn region sdPodBlock matchgroup=sdHeader start=/^\[Kube\]/ end=/^\[/me=e-2 contains=sdKubeKey
+syn match sdKubeKey contained /^AutoUpdate/
+syn match sdKubeKey contained /^ConfigMap/
+syn match sdKubeKey contained /^ContainersConfModule/
+syn match sdKubeKey contained /^ExitCodePropagation/
+syn match sdKubeKey contained /^GlobalArgs/
+syn match sdKubeKey contained /^KubeDownForce/
+syn match sdKubeKey contained /^LogDriver/
+syn match sdKubeKey contained /^Network/
+syn match sdKubeKey contained /^PodmanArgs/
+syn match sdKubeKey contained /^PublishPort/
+syn match sdKubeKey contained /^SetWorkingDirectory/
+syn match sdKubeKey contained /^UserNS/
+syn match sdKubeKey contained /^Yaml/
+"}}}
+
+" [Network] {{{1
+syn region sdNetworkBlock matchgroup=sdHeader start=/^\[Network\]/ end=/^\[/me=e-2 contains=sdNetworkKey
+syn match sdNetworkKey contained /^ContainersConfModule/
+syn match sdNetworkKey contained /^DisableDNS/
+syn match sdNetworkKey contained /^DNS/
+syn match sdNetworkKey contained /^Driver/
+syn match sdNetworkKey contained /^Gateway/
+syn match sdNetworkKey contained /^GlobalArgs/
+syn match sdNetworkKey contained /^InterfaceName/
+syn match sdNetworkKey contained /^Internal/
+syn match sdNetworkKey contained /^IPAMDriver/
+syn match sdNetworkKey contained /^IPRange/
+syn match sdNetworkKey contained /^IPv6/
+syn match sdNetworkKey contained /^Label/
+syn match sdNetworkKey contained /^NetworkDeleteOnStop/
+syn match sdNetworkKey contained /^NetworkName/
+syn match sdNetworkKey contained /^Options/
+syn match sdNetworkKey contained /^PodmanArgs/
+syn match sdNetworkKey contained /^Subnet/
+"}}}
+
+" [Volume] {{{1
+syn region sdVolumeBlock matchgroup=sdHeader start=/^\[Volume\]/ end=/^\[/me=e-2 contains=sdVolumeKey
+syn match sdVolumeKey contained /^ContainersConfModule/
+syn match sdVolumeKey contained /^Copy/
+syn match sdVolumeKey contained /^Device/
+syn match sdVolumeKey contained /^Driver/
+syn match sdVolumeKey contained /^GlobalArgs/
+syn match sdVolumeKey contained /^Group/
+syn match sdVolumeKey contained /^Image/
+syn match sdVolumeKey contained /^Label/
+syn match sdVolumeKey contained /^Options/
+syn match sdVolumeKey contained /^PodmanArgs/
+syn match sdVolumeKey contained /^Type/
+syn match sdVolumeKey contained /^User/
+syn match sdVolumeKey contained /^VolumeName/
+"}}}
+
+" [Build] {{{1
+syn region sdBuildBlock matchgroup=sdHeader start=/^\[Build\]/ end=/^\[/me=e-2 contains=sdBuildKey
+syn match sdBuildKey contained /^Annotation/
+syn match sdBuildKey contained /^Arch/
+syn match sdBuildKey contained /^AuthFile/
+syn match sdBuildKey contained /^ContainersConfModule/
+syn match sdBuildKey contained /^DNS/
+syn match sdBuildKey contained /^DNSOption/
+syn match sdBuildKey contained /^DNSSearch/
+syn match sdBuildKey contained /^Environment/
+syn match sdBuildKey contained /^File/
+syn match sdBuildKey contained /^ForceRM/
+syn match sdBuildKey contained /^GlobalArgs/
+syn match sdBuildKey contained /^GroupAdd/
+syn match sdBuildKey contained /^ImageTag/
+syn match sdBuildKey contained /^Label/
+syn match sdBuildKey contained /^Network/
+syn match sdBuildKey contained /^PodmanArgs/
+syn match sdBuildKey contained /^Pull/
+syn match sdBuildKey contained /^Retry/
+syn match sdBuildKey contained /^RetryDelay/
+syn match sdBuildKey contained /^Secret/
+syn match sdBuildKey contained /^SetWorkingDirectory/
+syn match sdBuildKey contained /^Target/
+syn match sdBuildKey contained /^TLSVerify/
+syn match sdBuildKey contained /^Variant/
+syn match sdBuildKey contained /^Volume/
+"}}}
+
+" [Image] {{{1
+syn region sdImageBlock matchgroup=sdHeader start=/^\[Image\]/ end=/^\[/me=e-2 contains=sdImageKey
+syn match sdImageKey contained /^AllTags/
+syn match sdImageKey contained /^Arch/
+syn match sdImageKey contained /^AuthFile/
+syn match sdImageKey contained /^CertDir/
+syn match sdImageKey contained /^ContainersConfModule/
+syn match sdImageKey contained /^Creds/
+syn match sdImageKey contained /^DecryptionKey/
+syn match sdImageKey contained /^GlobalArgs/
+syn match sdImageKey contained /^Image/
+syn match sdImageKey contained /^ImageTag/
+syn match sdImageKey contained /^OS/
+syn match sdImageKey contained /^PodmanArgs/
+syn match sdImageKey contained /^Retry/
+syn match sdImageKey contained /^RetryDelay/
+syn match sdImageKey contained /^TLSVerify/
+syn match sdImageKey contained /^Variant/
+"}}}
 
 " Coloring definitions {{{1
 hi def link sdComment       Comment
@@ -409,6 +632,13 @@ hi def link sdAutomountKey      sdKey
 hi def link sdSwapKey           sdKey
 hi def link sdPathKey           sdKey
 hi def link sdScopeKey          sdKey
+hi def link sdContainerKey      sdKey
+hi def link sdPodKey            sdKey
+hi def link sdKubeKey           sdKey
+hi def link sdNetworkKey        sdKey
+hi def link sdVolumeKey         sdKey
+hi def link sdBuildKey          sdKey
+hi def link sdImageKey          sdKey
 
 " Coloring links: constant values {{{1
 hi def link sdInt               sdValue
@@ -442,6 +672,7 @@ hi def link sdRlimit            sdValue
 hi def link sdCapName           sdValue
 hi def link sdDevPolicy         sdValue
 hi def link sdDevAllowPerm      sdValue
+hi def link sdContainerNotifyType sdValue
 hi def link sdDevAllowErr       Error
 
 " Coloring links: symbols/flags {{{1
